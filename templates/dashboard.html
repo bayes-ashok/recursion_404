@@ -30,7 +30,46 @@
                         <label for="formFile" class="form-label">Default file input example</label>
                         <input class="form-control" type="file" id="formFile">
                       </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                      <div>
+                        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+                        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                        <label for="location" class="form-label">Location</label>
+                
+                        <div id="map" style="height: 300px;"></div>
+                         <!-- Script for Leaflet map -->
+   <script>
+    // Initialize the Leaflet map
+    var map = L.map('map').setView([27.7172, 85.3240], 13);
+
+    // Add the OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Initialize marker without setting a specific location
+    var marker = L.marker([0, 0], { draggable: true }).addTo(map);
+
+    // Listen for the map click event to set the marker location
+    map.on('click', function (event) {
+        var clickedLatLng = event.latlng;
+        marker.setLatLng(clickedLatLng);
+        updateMarkerPosition(clickedLatLng);
+    });
+
+    // Listen for the marker drag event to update latitude and longitude
+    marker.on('dragend', function (event) {
+        var position = marker.getLatLng();
+        updateMarkerPosition(position);
+    });
+
+    function updateMarkerPosition(position) {
+        document.getElementById('latitude').value = position.lat;
+        document.getElementById('longitude').value = position.lng;
+    }
+</script>
+                      </div>
+                      <br>
+                    <button type="submit" class="btn btn-primary" type="submit">Submit</button>
                   </form>
                 </div>
 
