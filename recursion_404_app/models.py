@@ -4,7 +4,7 @@ from django.db import models
 
 class Location(models.Model):
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='location_images/')
+    image = models.ImageField(upload_to='pothole/',null=True, blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
 
