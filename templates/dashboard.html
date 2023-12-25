@@ -21,20 +21,22 @@
               <div class="card info-card sales-card">
                 <div class="card-body">
                   <h5 class="card-title">Report Potholes</h5>
-                  <form>
-                    <div class="mb-3">
-                      <label for="Name" class="form-label">Name</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name">
-                    </div>
+                  <form method="post" action="/report_pothole">
+                  {% csrf_token %}
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" required>
+                    <div class="invalid-feedback">Please, enter your name!</div>
+
                       <div class="mb-3">
                         <label for="formFile" class="form-label">Default file input example</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <input name = "formFile"class="form-control" type="file" id="formFile">
                       </div>
                       <div>
                         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
                         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
                         <label for="location" class="form-label">Location</label>
-                
+                        <input type="hidden" id="latitude" name="latitude">
+                        <input type="hidden" id="longitude" name="longitude">
                         <div id="map" style="height: 300px;"></div>
                          <!-- Script for Leaflet map -->
    <script>
@@ -69,7 +71,7 @@
 </script>
                       </div>
                       <br>
-                    <button type="submit" class="btn btn-primary" type="submit">Submit</button>
+                    <button type="submit" class="btn btn-primary" >Submit</button>
                   </form>
                 </div>
 
@@ -85,11 +87,10 @@
                 <div class="card-body">
                   <h5 class="card-title">Total Casualties <span>| All</span></h5>
 
-                  <form>
-                    <div class="mb-3">
-                        <div id="emailHelp" class="form-text" style="font-weight: bold;">Report Pothole</div>
-                    </div>Name</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name">
+                  <form  >
+                    <label for="name_dis" class="form-label">Name</label>
+                    <input type="text" name="name_dis" class="form-control" id="name_dis" required>
+                    <div class="invalid-feedback">Please, enter your name!</div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
                         <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter your description here..."></textarea>
