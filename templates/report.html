@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="https://flowbite.com">
+                <img src="https://flowbite.com/docs/images/logo.svg" height="32" alt="Flowbite Logo">
+                <span class="ml-3">SajiloCity</span>
+            </a>
+            <form class="d-flex align-items-center">
+                <div class="position-relative w-100">
+                    <div class="position-absolute top-0 start-0 d-flex align-items-center ps-3">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg" style="color: #858EAD;">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <input type="text" id="simple-search" class="form-control ps-5" placeholder="Type here to search..."
+                        required="" style="background-color: #F4F6F8; border-color: #F4F6F8; color: #858EAD;">
+                </div>
+            </form>
+
+            <div class="collapse navbar-collapse">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="tel:5541251234">(555) 412-1234</a>
+                    <a class="nav-item nav-link text-primary" href="#">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Secondary Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCompany" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Company
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownCompany">
+                            <a class="dropdown-item" href="#">About Us</a>
+                            <a class="dropdown-item" href="#">Our Mission</a>
+                            <a class="dropdown-item" href="#">Values</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Careers</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConnect" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Connect
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownConnect">
+                            <a class="dropdown-item" href="#">About Us</a>
+                            <a class="dropdown-item" href="#">Our Mission</a>
+                            <a class="dropdown-item" href="#">Values</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Careers</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMobility" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mobility
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMobility">
+                            <a class="dropdown-item" href="#">About Us</a>
+                            <a class="dropdown-item" href="#">Our Mission</a>
+                            <a class="dropdown-item" href="#">Values</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Careers</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <h2>ReportPotHole</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quae vel expedita odit voluptate
+                reprehenderit qui quaerat repellat quam totam!</p>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name"><br>
+            <label for="name">Picture:</label>
+            <input type="file" id="fileUpload" name="fileUpload">
+            <!-- Add other elements like picture and map API here -->
+        </div>
+
+        <div class="section">
+            <h2>OtherReport</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum nostrum nisi atque voluptatibus,
+                exercitationem numquam neque expedita, animi deserunt corrupti consequatur officia beatae nihil, ad
+                fugiat doloribus quisquam inventore reiciendis!.</p>
+            <label for="label1">Required:</label><br>
+            <input type="text" id="label1" name="label1" placeholder="Text field"><br>
+            <label for="textarea">Textarea:</label><br>
+            <textarea id="textarea" name="textarea" rows="4" placeholder="Your text here"></textarea>
+            <button type="submit">Submit</button><br>
+            <button type="button">Cancel</button>
+        </div>
+    </div>
+</body>
+
+</html>
