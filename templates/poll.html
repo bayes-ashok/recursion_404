@@ -97,44 +97,38 @@
     </div>
 
     <section class="section dashboard">
+        {% for p in desc %}
         <div class="container">
-            <form action="/submit-poll" method="post" onsubmit="return validateForm()">
+            <form action="/submit-poll" method="post">
+                {% csrf_token %}
                 <div class="card-body">
                     <div class="question">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+                        <p name="name">{{ p.discription|safe }}</p>
                         <div class="options">
-                            <div class="option">
-                                <label>
-                                    <input type="radio" name="q1" value="option1"> Very Satisfied
-                                </label>
-                            </div>
-                            <div class="option">
-                                <label>
-                                    <input type="radio" name="q1" value="option2"> Satisfied
-                                </label>
-                            </div>
-                            <div class="option">
-                                <label>
-                                    <input type="radio" name="q1" value="option3"> Neutral
-                                </label>
-                            </div>
-                            <div class="option">
-                                <label>
-                                    <input type="radio" name="q1" value="option4"> Dissatisfied
-                                </label>
-                            </div>
-                            <div class="option">
-                                <label>
-                                    <input type="radio" name="q1" value="option5"> Very Dissatisfied
-                                </label>
-                            </div>
+                            <label>
+                                <input type="radio" name="satisfaction" value="Very Satisfied"> Very Satisfied
+                            </label>
+                            <label>
+                                <input type="radio" name="satisfaction" value="Satisfied"> Satisfied
+                            </label>
+                            <label>
+                                <input type="radio" name="satisfaction" value="Neutral"> Neutral
+                            </label>
+                            <label>
+                                <input type="radio" name="satisfaction" value="Dissatisfied"> Dissatisfied
+                            </label>
+                            <label>
+                                <input type="radio" name="satisfaction" value="Very Dissatisfied"> Very Dissatisfied
+                            </label>
                         </div>
                         <textarea name="text1" placeholder="Send us your suggestion (Optional)" class="form-control"></textarea>
                     </div>
                     <button type="submit">Submit</button>
                 </div>
             </form>
+            
         </div>
+        {% endfor %}
     </section>
 </main>
 

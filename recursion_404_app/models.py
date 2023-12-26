@@ -1,5 +1,7 @@
 # Create your models here.
 from imaplib import _Authenticator
+from tinymce import models as tinymce_models
+
 
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin, User)
@@ -41,6 +43,6 @@ class Event(models.Model):
         return self.name
     
 class poll(models.Model):
-    discription = models.TextField(max_length=1000)
+    discription = tinymce_models.HTMLField(null=True)
     satisfaction = models.CharField(null =True, blank =True,max_length=255)
     suggestion = models.TextField(null =True, blank =True,max_length=1000)

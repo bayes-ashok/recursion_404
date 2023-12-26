@@ -9,7 +9,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from pyexpat.errors import messages
 
-from .models import Event, Location, Reports, User
+from .models import Event, Location, Reports, User,poll
 
 
 def index(request):
@@ -146,5 +146,34 @@ def login_check(request):
     return render(request, 'login.html')
 
 
-def poll(request):
-    return render(request,'poll.html')
+def view(request):
+    desc=poll.objects.all()
+    data={
+        'desc':desc
+    }
+    return render(request,'poll.html',data)
+
+
+def submit_poll(request):
+    if request.method == 'POST':
+        # Process the form data
+        description = request.POST.get('name')
+        satisfaction = request.POST.get('satisfaction')
+        suggestion = request.POST.get('text1')
+        existing_poll = poll.objects.get(discription=description)
+        # Retrieve existing poll instance or create a new one
+        existing_poll, created = poll.objects.get_or_create(discription=description)
+
+        # Update the existing or newly created poll instance with satisfaction and suggestion
+        existing_poll.satisfaction = satisfaction
+        existing_poll.suggestion = suggestion
+
+        # Save the instance
+        existing_poll.save()
+
+
+        # Redirect to a success page or any other appropriate action
+        return redirect('/')  # Replace 'success_page' with the actual URL or name of the success page
+
+    # If the request method is not POST, render the form page
+    return render(request, 'poll.html')  

@@ -24,6 +24,7 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('recursion_404_app.urls')),
+    path('tinymce/', include('tinymce.urls')),
 
 ]
 

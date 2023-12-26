@@ -13,6 +13,9 @@ urlpatterns = [
     path('signup',views.signup,name="signup"),
     path('login',views.login,name="login"),
     path('events', views.events,name='events'),
-    path('poll', views.poll,name='poll'),
+    path('view', views.view,name='poll'),
     path('all_events/', views.all_events, name='all_events'), 
+    
+    path('submit-poll', views.submit_poll,name='submitpoll'),
+
 ]
