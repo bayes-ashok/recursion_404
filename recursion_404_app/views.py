@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User, auth
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 
-from .models import Location, Signup, Reports
+from .models import Location, Signup, Reports,Event
 
 
 def index(request):
@@ -25,6 +25,29 @@ def other_reports(request):
         return redirect('/')  # Replace 'dashboard' with your desired redirect URL
 
     return render(request, 'dashboard.html')
+
+
+# events calendar
+def events(request):
+    all_events = Event.objects.all()
+    context = {
+        "events":all_events,
+    }
+    return render(request,'events.html',context)
+
+def all_events(request):                                                                                                 
+    all_events = Event.objects.all()                                                                                    
+    out = []                                                                                                             
+    for event in all_events:                                                                                             
+        out.append({                                                                                                     
+            'title': event.name,                                                                                         
+            'id': event.id,    
+            'description': event.description,                                                                                          
+            'start': event.start.isoformat(),  # Use isoformat() here                                                       
+            'end': event.end.isoformat(),      # Use isoformat() here                                                       
+        })                                                                                                               
+                                                                                                                      
+    return JsonResponse(out, safe=False)
 
 
 def report_pothole(request):
