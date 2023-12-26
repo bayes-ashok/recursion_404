@@ -39,3 +39,8 @@ class Event(models.Model):
     
     def __str__(self):
         return self.name
+    
+class poll(models.Model):
+    discription = models.TextField(max_length=1000)
+    satisfaction = models.CharField(null =True, blank =True,max_length=255)
+    suggestion = models.TextField(null =True, blank =True,max_length=1000)
