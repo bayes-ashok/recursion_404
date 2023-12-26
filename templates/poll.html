@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Poll</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .option {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+{% extends "index.html" %}
+
+{% block content %}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Public Poll</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section class="section dashboard">
+        <div class="container">
+            <form action="/submit-poll" method="post" onsubmit="return validateForm()">
+                <div class="card-body">
+                    <div class="question">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
+                        <div class="options">
+                            <div class="option">
+                                <label>
+                                    <input type="radio" name="q1" value="option1"> Very Satisfied
+                                </label>
+                            </div>
+                            <div class="option">
+                                <label>
+                                    <input type="radio" name="q1" value="option2"> Satisfied
+                                </label>
+                            </div>
+                            <div class="option">
+                                <label>
+                                    <input type="radio" name="q1" value="option3"> Neutral
+                                </label>
+                            </div>
+                            <div class="option">
+                                <label>
+                                    <input type="radio" name="q1" value="option4"> Dissatisfied
+                                </label>
+                            </div>
+                            <div class="option">
+                                <label>
+                                    <input type="radio" name="q1" value="option5"> Very Dissatisfied
+                                </label>
+                            </div>
+                        </div>
+                        <textarea name="text1" placeholder="Send us your suggestion (Optional)" class="form-control"></textarea>
+                    </div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+<script>
+    function validateForm() {
+        var radioButtons = document.getElementsByName("q1");
+        var isAnyOptionSelected = false;
+        for (var i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked) {
+                isAnyOptionSelected = true;
+                break;
+            }
+        }
+        if (!isAnyOptionSelected) {
+            alert("Please select a satisfaction level before submitting.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+{% endblock content %}
+
+</body>
+
+</html>

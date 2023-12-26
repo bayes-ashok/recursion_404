@@ -144,3 +144,7 @@ def login_check(request):
             print("Invalid email or password")  # You can customize this part based on your needs
     
     return render(request, 'login.html')
+
+
+def poll(request):
+    return render(request,'poll.html')
