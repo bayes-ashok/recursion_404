@@ -2,12 +2,14 @@ from django.contrib.auth.models import User, auth
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 
-from .models import Location, Signup, Reports,Event
+from .models import Event, Location, Reports, Signup
 
 
 def index(request):
     return render(request,'dashboard.html')
 
+def security(request):
+    return render(request,'security.html')
 
 def other_reports(request):
     if request.method == 'POST':
