@@ -1,6 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial, sans-serif';
+        }
 
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            color: black;
+        }
+
+        form button {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 8px;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        a {
+            color: #4caf50;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h2>Signin</h2>
+
+            <form method="POST" action="/login" >
+                {%csrf_token%}
+
+                <div class="form-group">
+                    <label class="mb-2 font-weight-bold" for="floating_email">Email address</label>
+                    <input type="email" name="email" id="floating_email" class="form-control mb-4" placeholder=" " required>
+                </div>
+                <div class="form-group">
+                    <label class="mb-2 font-weight-bold" for="floating_password">Password</label>
+                    <input type="password" name="password" id="floating_password" class="form-control mb-4" placeholder=" " required>
+                </div>
+               
+    </div>
+</body>
 </html>
-    
