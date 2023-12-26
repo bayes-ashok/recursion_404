@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from .models import Location
+from .models import Location, User
 
 
 def index(request):
@@ -25,3 +25,19 @@ def report_pothole(request):
         return redirect('/')  # Replace 'dashboard' with your desired redirect URL
 
     return render(request, 'dashboard.html')
+
+def signup(request):
+    if request.method == 'POST':
+        name=request.POST['name']
+        username = request.POST['username']
+        password = request.POST['password']
+        phone_number=request.POST['phone_number']
+
+        email = request.POST['email']
+        print(username, password, phone_number,  email, name)
+
+        myuser = User.objects.create_user(email=email, password=password, phone_number=phone_number, name=name)
+
+        return redirect('signin')
+
+    return render(request, 'signup.html')
