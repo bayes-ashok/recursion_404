@@ -69,7 +69,7 @@
         <div class="login-box">
             <h2>Signup</h2>
 
-            <form method="POST" action="/signup" >
+            <form method="POST" action="/signup-post" >
                 {%csrf_token%}
                 <div class="form-group">
                     <label class="mb-2 font-weight-bold" for="floating_email">Email address</label>
@@ -94,7 +94,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
 
-            <p>Don't have an account? <a href="/signup">Signup</a></p>
+            <p>Already have an account? <a href="/login">Login</a></p>
         </div>
     </div>
 </body>

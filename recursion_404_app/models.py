@@ -1,8 +1,11 @@
-from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
-                                        PermissionsMixin)
-from django.db import models
-
 # Create your models here.
+from imaplib import _Authenticator
+
+from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
+                                        PermissionsMixin, User)
+from django.db import models
+from django.shortcuts import redirect, render
+
 
 class Location(models.Model):
     name = models.CharField(max_length=100)
@@ -20,14 +23,12 @@ class Reports(models.Model):
 
     def __str__(self):
         return self.name
-class Signup(models.Model):
-    name = models.CharField(max_length=1000)
+class User(models.Model):
+    name = models.CharField(max_length=1000,null=True)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=10, unique=True, null=True) 
     password = models.CharField(max_length=128)
 
-    def __str__(self):
-        return self.name
 
 class Event(models.Model):
     id=models.AutoField(primary_key=True)

@@ -4,6 +4,6 @@ from django.contrib import admin
 from . import models
 
 admin.site.register(models.Location)
-admin.site.register(models.Signup)
+admin.site.register(models.User)
 admin.site.register(models.Reports)
 admin.site.register(models.Event)

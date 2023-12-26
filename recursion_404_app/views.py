@@ -1,8 +1,15 @@
+from imaplib import _Authenticator
+from multiprocessing import AuthenticationError
+
+from django.contrib import auth
+from django.contrib.auth import authenticate
+from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
+from pyexpat.errors import messages
 
-from .models import Location, Signup, Reports,Event
+from .models import Event, Location, Reports, User
 
 
 def index(request):
@@ -69,38 +76,71 @@ def report_pothole(request):
     return render(request, 'dashboard.html')
 
 
+from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
-from .models import Signup  # Import your Signup model
+from .models import User  # Import your Signup model
 
 
 def signup(request):
+    return render(request, 'signin.html')
+
+   
+
+def signup_post(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        password_confirm = request.POST.get('password_confirm')
-        name = request.POST.get('name')
-        phone_number = request.POST.get('phone_number')
-
+        username = request.POST['phone_number']
+        email = request.POST['email']
+        password = request.POST['password']
+        confirm_password = request.POST['password_confirm']
         
-        # Create a new user if passwords match
-        new_user = Signup.objects.create(email=email, password=password, name=name, phone_number=phone_number)
-        new_user.save()
-
-        return redirect('login')  # Redirect to the signin page upon successful signup
-
+        # Check if passwords match
+        if password != confirm_password:
+            return render(request, 'signup.html', {'error': 'Passwords do not match'})
+        
+        
+        
+        # Check if the email is already registered
+        if User.objects.filter(email=email).exists():
+            return render(request, 'signup.html', {'error': 'Email is already registered'})
+        
+        # Create the user
+        user = User(email=email, password=password)
+        user.save()
+        
+        # Optionally, you can log the user in after signup
+        # login(request, user)
+        
+        # Redirect to a success page or login page
+        return redirect('login')  # Replace 'login' with your login URL name or path
+    
     return render(request, 'signup.html')
 
 
+
+
+from django.contrib import auth
+from django.shortcuts import redirect, render
+
+
 def login(request):
-    if request.method=="POST":
-        email = request.POST['email']
-        password = request.POST['password']
+    return render(request,'login.html')
 
-        user = auth.authenticate(email=email, password=password)
 
-        if user is not None:
-            auth.login(request.user)
-            return render('next')
+def login_check(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
         
-    return render(request,"login.html")
+        # Custom authentication logic for your CustomUser model
+        user = User.objects.filter(email=email).first()
+
+        if email==user.email and password==user.password:
+            # Successful authentication logic
+            # For example: login(request, user)
+            return redirect('/')  # Replace '/' with your dashboard URL
+        else:
+            # Handle invalid login here, e.g., show an error message
+            print("Invalid email or password")  # You can customize this part based on your needs
+    
+    return render(request, 'login.html')
