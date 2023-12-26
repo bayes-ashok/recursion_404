@@ -1,7 +1,8 @@
+from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from .models import Location, User
+from .models import Location, Signup
 
 
 def index(request):
@@ -26,18 +27,39 @@ def report_pothole(request):
 
     return render(request, 'dashboard.html')
 
+
+from django.shortcuts import redirect, render
+
+from .models import Signup  # Import your Signup model
+
+
 def signup(request):
     if request.method == 'POST':
-        name=request.POST['name']
-        username = request.POST['username']
-        password = request.POST['password']
-        phone_number=request.POST['phone_number']
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        password_confirm = request.POST.get('password_confirm')
+        name = request.POST.get('name')
+        phone_number = request.POST.get('phone_number')
 
-        email = request.POST['email']
-        print(username, password, phone_number,  email, name)
+        
+        # Create a new user if passwords match
+        new_user = Signup.objects.create(email=email, password=password, name=name, phone_number=phone_number)
+        new_user.save()
 
-        myuser = User.objects.create_user(email=email, password=password, phone_number=phone_number, name=name)
-
-        return redirect('signin')
+        return redirect('login')  # Redirect to the signin page upon successful signup
 
     return render(request, 'signup.html')
+
+
+def login(request):
+    if request.method=="POST":
+        email = request.POST['email']
+        password = request.POST['password']
+
+        user = auth.authenticate(email=email, password=password)
+
+        if user is not None:
+            auth.login(request.user)
+            return render('next')
+        
+    return render(request,"login.html")
