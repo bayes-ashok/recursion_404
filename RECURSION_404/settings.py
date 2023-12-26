@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,3 +132,23 @@ STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'),)
 MEDIA_ROOT = BASE_DIR /"media"
 
 MEDIA_URL = "/media/"
+
+
+
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "sajilocity",
+     "site_brand": "ADMIN",
+    "site_logo": "img/logo.svg",
+    "welcome_sign": "Welcome to the sajilocity ADMIN LOGIN",
+    "copyright": "sajilocity.com",
+        "show_ui_builder": True,
+
+
+     # List of model admins to search from the search bar, search bar omitted if excluded
+    # If you want to use a single search field you dont need to use a list, you can use a simple string 
+    "search_model": ["auth.User", "auth.Group"],
+
+
+
+}
