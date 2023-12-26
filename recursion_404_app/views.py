@@ -2,11 +2,29 @@ from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from .models import Location, Signup
+from .models import Location, Signup, Reports
 
 
 def index(request):
     return render(request,'dashboard.html')
+
+
+def other_reports(request):
+    if request.method == 'POST':
+        # Get form data from request.POST and request.FILES
+        name = request.POST.get('name1')
+        image = request.POST.get('formFile1')
+        desc = request.POST.get('myTextarea1')
+        print(name,image,desc)
+        # Create and save Location object
+        location = Reports(name=name, image=image, desc=desc)
+
+        location.save()
+
+
+        return redirect('/')  # Replace 'dashboard' with your desired redirect URL
+
+    return render(request, 'dashboard.html')
 
 
 def report_pothole(request):

@@ -23,14 +23,15 @@
                   <h5 class="card-title">Report Potholes</h5>
                   <form method="post" action="/report_pothole">
                   {% csrf_token %}
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" required>
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Name</label>
+                      <input type="text" name="name" class="form-control" id="name" required>
+                    </div>  
                     <div class="invalid-feedback">Please, enter your name!</div>
-
-                      <div class="mb-3">
-                        <label for="formFile" class="form-label">Default file input example</label>
-                        <input name = "formFile"class="form-control" type="file" id="formFile">
-                      </div>
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">Default file input example</label>
+                      <input name = "formFile"class="form-control" type="file" id="formFile">
+                    </div>
                       <div>
                         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
                         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -39,68 +40,69 @@
                         <input type="hidden" id="longitude" name="longitude">
                         <div id="map" style="height: 300px;"></div>
                          <!-- Script for Leaflet map -->
-   <script>
-    // Initialize the Leaflet map
-    var map = L.map('map').setView([27.7172, 85.3240], 13);
+                        <script>
+                          // Initialize the Leaflet map
+                          var map = L.map('map').setView([27.7172, 85.3240], 13);
 
-    // Add the OpenStreetMap tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+                          // Add the OpenStreetMap tile layer
+                          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                              attribution: '© OpenStreetMap contributors'
+                          }).addTo(map);
 
-    // Initialize marker without setting a specific location
-    var marker = L.marker([0, 0], { draggable: true }).addTo(map);
+                          // Initialize marker without setting a specific location
+                          var marker = L.marker([0, 0], { draggable: true }).addTo(map);
 
-    // Listen for the map click event to set the marker location
-    map.on('click', function (event) {
-        var clickedLatLng = event.latlng;
-        marker.setLatLng(clickedLatLng);
-        updateMarkerPosition(clickedLatLng);
-    });
+                          // Listen for the map click event to set the marker location
+                          map.on('click', function (event) {
+                              var clickedLatLng = event.latlng;
+                              marker.setLatLng(clickedLatLng);
+                              updateMarkerPosition(clickedLatLng);
+                          });
 
-    // Listen for the marker drag event to update latitude and longitude
-    marker.on('dragend', function (event) {
-        var position = marker.getLatLng();
-        updateMarkerPosition(position);
-    });
+                          // Listen for the marker drag event to update latitude and longitude
+                          marker.on('dragend', function (event) {
+                              var position = marker.getLatLng();
+                              updateMarkerPosition(position);
+                          });
 
-    function updateMarkerPosition(position) {
-        document.getElementById('latitude').value = position.lat;
-        document.getElementById('longitude').value = position.lng;
-    }
-</script>
+                          function updateMarkerPosition(position) {
+                              document.getElementById('latitude').value = position.lat;
+                              document.getElementById('longitude').value = position.lng;
+                          }
+                        </script>
                       </div>
                       <br>
                     <button type="submit" class="btn btn-primary" >Submit</button>
                   </form>
                 </div>
-
               </div>
             </div><!-- End Sales Card -->
 
-            <!-- casualties Card -->
             <div class="col-6">
-              <div class="card info-card revenue-card">
-
-                
-
+              <div class="card info-card sales-card">
                 <div class="card-body">
-                  <h5 class="card-title">Total Casualties <span>| All</span></h5>
-
-                  <form  >
-                    <label for="name_dis" class="form-label">Name</label>
-                    <input type="text" name="name_dis" class="form-control" id="name_dis" required>
+                  <h5 class="card-title">Report Potholes</h5>
+                  <form method="post" action="/other_reports">
+                  {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="name1" class="form-label">Name</label>
+                      <input type="text" name="name1" class="form-control" id="name1" required>
+                    </div>  
                     <div class="invalid-feedback">Please, enter your name!</div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter your description here..."></textarea>
+                      <label for="formFile1" class="form-label">Default file input example</label>
+                      <input name = "formFile1"class="form-control" type="file" id="formFile1">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                      <div>
+                        <label for="formFile1" class="form-label">Default file input example</label>
+                        <textarea id="myTextarea1" name="myTextarea1" rows="12" cols="50" class="form-control"></textarea>
+                      </div>
+                      <br>
+                    <button type="submit" class="btn btn-primary" >Submit</button>
+                  </form>
                 </div>
-
               </div>
-            </div><!-- End Main Card -->
+            </div><!-- End Sales Card -->
           </div>
 
 
