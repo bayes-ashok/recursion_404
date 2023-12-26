@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Signup Page</title>
+    <link href="static/css/style.css" rel="stylesheet">
+  <link href="static/css/style.css" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="static/img/logo.svg" rel="icon">
+  <link href="static/img/logo.svg" rel="apple-touch-icon">
     <style>
         body {
             margin: 0;
@@ -29,7 +34,7 @@
 
         h2 {
             color: #333;
-            font-size: 28px;
+            font-size: 32px;
             margin-bottom: 20px;
         }
 
@@ -47,6 +52,7 @@
         form button {
             width: 100%;
             padding: 12px;
+            font-size: medium;
             box-sizing: border-box;
             border: none;
             border-radius: 8px;
@@ -67,30 +73,29 @@
 <body>
     <div class="container">
         <div class="login-box">
-            <h2>Signup</h2>
+            <h2>Create Your Account</h2>
 
             <form method="POST" action="/signup-post" >
                 {%csrf_token%}
                 <div class="form-group">
-                    <label class="mb-2 font-weight-bold" for="floating_email">Email address</label>
-                    <input type="email" name="email" id="floating_email" class="form-control mb-4" placeholder=" " required>
+                    <div class=" form-group">
+                        <input type="text" name="name" id="floating_first_name" class="form-control mb-4" placeholder="Enter Your Name" required>
+                    </div>
+                    <div class=" form-group">
+                        <input type="tel"  name="phone_number" id="floating_phone" class="form-control mb-4" placeholder="Enter Your Phone Number" required>
+                    </div>
+                    
+                    <input type="email" name="email" id="floating_email" class="form-control mb-4" placeholder="Enter Your Email" required>
                 </div>
                 <div class="form-group">
-                    <label class="mb-2 font-weight-bold" for="floating_password">Password</label>
-                    <input type="password" name="password" id="floating_password" class="form-control mb-4" placeholder=" " required>
+
+                    <input type="password" name="password" id="floating_password" class="form-control mb-4" placeholder="Enter Your Password" required>
                 </div>
-                <div class="form-group">
-                    <label class="mb-2 font-weight-bold" for="floating_repeat_password">Confirm password</label>
-                    <input type="password" name="password_confirm" id="floating_repeat_password" class="form-control mb-4" placeholder=" " required>
+                <div class="form-group" style="margin-bottom: 10px;">
+                    
+                    <input type="password" name="password_confirm" id="floating_repeat_password" class="form-control mb-4" placeholder="Confirm Your Password" required>
                 </div>
-                <div class=" form-group">
-                    <label class="mb-2 font-weight-bold" for="floating_first_name">Full Name</label>
-                    <input type="text" name="name" id="floating_first_name" class="form-control mb-4" placeholder=" " required>
-                </div>
-                <div class=" form-group">
-                    <label class="mb-2 font-weight-bold" for="floating_phone">Phone number </label>
-                    <input type="tel"  name="phone_number" id="floating_phone" class="form-control mb-4" placeholder=" " required>
-                </div>
+                
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
 

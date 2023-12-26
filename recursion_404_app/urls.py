@@ -15,7 +15,7 @@ urlpatterns = [
     path('events', views.events,name='events'),
     path('view', views.view,name='poll'),
     path('all_events/', views.all_events, name='all_events'), 
-    
+    path('security', views.security,name='security'),
     path('submit-poll', views.submit_poll,name='submitpoll'),
 
 ]

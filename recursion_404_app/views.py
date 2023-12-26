@@ -44,7 +44,8 @@ def events(request):
 
 def all_events(request):                                                                                                 
     all_events = Event.objects.all()                                                                                    
-    out = []                                                                                                             
+    out = []       
+                                                                                                          
     for event in all_events:                                                                                             
         out.append({                                                                                                     
             'title': event.name,                                                                                         
@@ -83,7 +84,7 @@ from .models import User  # Import your Signup model
 
 
 def signup(request):
-    return render(request, 'signin.html')
+    return render(request, 'signup.html')
 
    
 
@@ -122,6 +123,8 @@ def signup_post(request):
 from django.contrib import auth
 from django.shortcuts import redirect, render
 
+def security(request):
+    return render(request,'security.html')
 
 def login(request):
     return render(request,'login.html')

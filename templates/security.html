@@ -1,82 +1,133 @@
-{% extends "fixed.html" %}
+
+{% extends "index.html" %}
+
+{% block styles %}
+<style>
+    table.custom-striped {
+        background-image: linear-gradient(
+            45deg, 
+            #ADD8E6 50%, 
+            white 50%
+        );
+        background-size: 40px 40px;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<div class="containersu">
-    <div class="section1">
-        <form>
-            <div class="mb-3">
-                <div id="emailHelp" class="form-text" style="font-weight: bold;">Report Pothole
-                </div>
-            </div>Name</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name">
-            <div class="mb-3">
-                <label for="picture" class="form-label">Select Picture</label>
-                <input type="file" class="form-control" id="picture" name="picture">
-            </div>
-            <button type="reset" class="btn btn-secondary">Reset</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-    </div>
+<main id="main" class="main">
+    <div class="pagetitle mb-4" style="text-align: center;">
+        <h1>Emergency Room</h1>
+  
+      </div><!-- End Page Title -->
 
-    <div class="section1">
-        <form>
-            <div class="mb-3">
-                <div id="emailHelp" class="form-text" style="font-weight: bold;">Hotlines</div>
-            </div>
-    
-            <!-- Bootstrap Table -->
-            <div class="table-responsive">
-                <table class="table table-bordered custom-striped">
-                    <thead >
-                        <tr>
-                            
+    <section class="section dashboard">
+        <div class="container">
+          {% comment %} <div class="row">
+            <div class="col-6">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Report Potholes</h5>
+                  <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Name</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                      <label for="picture" class="form-label">Select Picture</label>
+                      <input type="file" class="form-control" id="picture" name="picture">
+                    </div>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+            <div class="col-12">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Hotlines</h5>
+                  <form>
+                    <div class="table-responsive">
+                      <table class="table table-bordered custom-striped">
+                        <thead>
+                          <tr>
                             <th>Organization</th>
                             <th>Number</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>                           
-                            <td>Nepal Police</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>Fire Brigade</td>
-                            <td>101</td>
-                        </tr>
-                        <tr>
-                            <td>Ambulance</td>
-                            <td>102</td>
-                        </tr>
-                        <tr>                           
-                            <td>Child Helpline</td>
-                            <td>104</td>
-                        </tr>
-                        <tr>
-                            <td>CIAA(Commission For The Investigation of Abuse of Authority)</td>
-                            <td>107</td>
-                        </tr>
-                        <tr>
-                            <td>Tourist Police</td>
-                            <td>1144</td>
-                        </tr>
-                        <tr>
-                            <td>Electricity</td>
-                            <td>4350896, 4357219</td>
-                        </tr>
-                        <tr>
-                            <td>District Police Office</td>
-                            <td>4261790, 4261945</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>                           
+                                <td>Nepal Police</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>Fire Brigade</td>
+                                <td>101</td>
+                            </tr>
+                            <tr>
+                                <td>Ambulance</td>
+                                <td>102</td>
+                            </tr>
+                            <tr>
+                                <td>Traffic Police Control Room</td>
+                                <td>103</td>
+                            </tr>
+                            <tr>
+                                <td>Traffic Jam Information ( SMS )</td>
+                                <td>JAM 4321</td>
+                            </tr>
+                            <tr>                           
+                                <td>Child Missing</td>
+                                <td>104</td>
+                            </tr>
+                            <tr>
+                                <td>CIAA(Commission For The Investigation of Abuse of Authority)</td>
+                                <td>107</td>
+                            </tr>
+                            <tr>
+                                <td>Tourist Police</td>
+                                <td>1144</td>
+                            </tr>
+                            <tr>
+                                <td>Electricity (Balaju, Maharajgunj, Chabahill, Bhaktapur ) </td>
+                                <td>4350896, 4357219, 44741645, 6610065 </td>
+                            </tr>
+                            <tr>
+                                <td>District Police Office</td>
+                                <td>4261790, 4261945</td>
+                            </tr>
+                            <tr>
+                                <td>Himalayan Rescue Association ( Kathmandu )</td>
+                                <td>4244485</td>
+                            </tr>
+                            <tr>
+                                <td>Child Helpline ( CWIN )</td>
+                                <td>1098</td>
+                            </tr>
+                            <tr>
+                                <td>Himalayan Rescue Dog Squad ( Pokhara )</td>
+                                <td>61-520374</td>
+                            </tr>
+                            <tr>
+                                <td>Bir Hospital</td>
+                                <td>4221119</td>
+                            </tr>
+                            <tr>
+                                <td>Teaching Hospital</td>
+                                <td>4412505</td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
-    
-            <!-- Other form elements or buttons can go here -->
-    
-        </form>
-    </div>
-    
-</div>
-
+          </div>
+        </div>
+    </section>
+</main>
 {% endblock content %}

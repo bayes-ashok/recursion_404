@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="static/img/favicon.png" rel="icon">
-  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="static/img/logo.svg" rel="icon">
+  <link href="static/img/logo.svg" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -74,7 +74,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="/" class="logo d-flex align-items-center">
           <img src="static/img/logo.svg" alt="">
-          <span class="d-none d-lg-block">Surakshit</span>
+          <span class="d-none d-lg-block">Sajilo City</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div><!-- End Logo -->
@@ -231,86 +231,52 @@
   
     </header><!-- End Header -->
   
-    <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
-  
-      <ul class="sidebar-nav" id="sidebar-nav">
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/">
-            <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/events">
-            <i class="bi bi-grid"></i>
-            <span>Events</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-        
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-exclamation-triangle"></i><span>Alerts</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="/earthquake-alert">
-                <i class="bi bi-circle"></i><span>Earthquake</span>
-              </a>
-            </li>
-            <li>
-              <a href="/flood-alert">
-                <i class="bi bi-circle"></i><span>Flood</span>
-              </a>
-            </li>
-            <li>
-              <a href="/glof-alert">
-                <i class="bi bi-circle"></i><span>GLOF</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Charts Nav -->
-  
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#charts-nav1" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="charts-nav1" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="/earthquake">
-                <i class="bi bi-circle"></i><span>Earthquake</span>
-              </a>
-            </li>
-            <li>
-              <a href="/flood">
-                <i class="bi bi-circle"></i><span>Flood</span>
-              </a>
-            </li>
-            <li>
-              <a href="/glof">
-                <i class="bi bi-circle"></i><span>GLOF</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Charts Nav -->
-      </ul>
-  
-    </aside><!-- End Sidebar-->
+      <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/events">
+          <i class="bi bi-calendar4-event"></i>
+          <span>Events</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/view">
+          <i class="bi bi-chat-dots"></i>
+          <span>Public Feedback</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/security">
+          <i class="bi bi-telephone"></i>
+          <span>Emergency Numbers</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
     <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Events</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
-          </ol>
-        </nav>
+      <div class="pagetitle mb-4" style="text-align: center;">
+        <h1>Event</h1>
+  
       </div><!-- End Page Title -->
-      <section class="section dashboard">
+    </div><!-- End Page Title -->
+    <section class="section dashboard">
      
     <div class="container">
         <div class="row">
@@ -341,44 +307,44 @@
 
     
     <script>
-        $(document).ready(function () {
-            var calendar = $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                events: '/all_events/',
-                eventClick: function (calEvent, jsEvent, view) {
-                    // Handle event click
-                    displayEventDetails(calEvent);
-                }
-            });
+      $(document).ready(function () {
+          var calendar = $('#calendar').fullCalendar({
+              header: {
+                  left: 'prev,next today',
+                  center: 'title',
+                  right: 'month,agendaWeek,agendaDay'
+              },
+              events: '/all_events/',
+              eventClick: function (calEvent, jsEvent, view) {
+                  // Handle event click
+                  displayEventDetails(calEvent);
+              }
+          });
 
-            function displayEventDetails(event) {
-                // Display event details in the modal
-                var modalBody = $('#eventModalBody');
-                modalBody.empty();
+          function displayEventDetails(event) {
+              // Display event details in the modal
+              var modalBody = $('#eventModalBody');
+              modalBody.empty();
 
-                modalBody.append('<p><strong>Title:</strong> ' + event.title + '</p>');
-                modalBody.append('<p><strong>Start:</strong> ' + moment(event.start).format('MMMM DD, YYYY HH:mm:ss') + '</p>');
-                modalBody.append('<p><strong>Description:</strong> ' + event.description + '</p>');
-                modalBody.append('<p><strong>End:</strong> ' + moment(event.end).format('MMMM DD, YYYY HH:mm:ss') + '</p>');
+              modalBody.append('<p><strong>Title:</strong> ' + event.title + '</p>');
+              modalBody.append('<p><strong>Start:</strong> ' + moment(event.start).format('MMMM DD, YYYY HH:mm:ss') + '</p>');
+              modalBody.append('<p><strong>Description:</strong> ' + event.description + '</p>');
+              modalBody.append('<p><strong>End:</strong> ' + moment(event.end).format('MMMM DD, YYYY HH:mm:ss') + '</p>');
 
-                // Manually trigger modal opening
-                $('#eventModal').modal('show');
-            }
-        });
-    </script>
+              // Manually trigger modal opening
+              $('#eventModal').modal('show');
+          }
+      });
+  </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
     <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>ezsnippets</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>404</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Designed by <a href="https://bootstrapmade.com/">ezsnippets</a>
+      Designed by <a href="https://bootstrapmade.com/">404</a>
     </div>
   </footer><!-- End Footer -->
 
